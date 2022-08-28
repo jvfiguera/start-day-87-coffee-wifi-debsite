@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cafe&Wifi API</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{‌{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Google Font Families -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&family=Montserrat&family=Neucha&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/908b69d6e2.js" crossorigin="anonymous"></script>
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="./static/css/styles.css" rel="stylesheet" />
+
+    <!-- Bootstrap Scripts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div>
+        <div class="row div-wel-cafe-wif">
+            <div>
+                <h1 class="col head_title"> WELCOME TO THE CAFE & WIFI APPI</h1>
+            </div>
+             <!-- New Post -->
+            <div class="col">
+                <!-- <a class="btn btn-primary float-right btn-add" style="background-color: #1A1A40; border: none; font-family: 'Montserrat'; font-size: 12px;font-weight: bold;" href="{{ url_for('fn_add_shop_coffee') }}"><i class="fa-solid fa-minus"></i> DELETE COFFEE SHOP</a> -->
+                <a class="btn btn-primary float-right btn-add" style="background-color: #1A1A40; border: none; font-family: 'Montserrat'; font-size: 12px;font-weight: bold;" href="{{ url_for('fn_add_shop_coffee') }}"><i class="fa-solid fa-circle-plus"></i> NEW COFFEE SHOP</a>
+            </div>
+        </div>
+        <div class="container div-main-fil-img">
+            <div class="row">
+                <div id="id-div-filters" class="col div-filters">
+                    <h1 class="h1-text-filters">FILTERS</h1>
+                    <br>
+                    <a class="btn btn-filter set active" href="{{ url_for('fn_filter_shop_coffee', has_filter='All')}}">
+                        <i class="fa-solid fa-house"></i><br><span title="Has chairs ?">All Coffee Shops</span></a>
+                    <br>
+                    <br>
+                    <div>
+                        <h1 id="id-productivity">PRODUCTIVITY</h1>
+                        <br>
+<!--                         <a class="btn btn-filter set active" href="{{ url_for('fn_filter_shop_coffee', has_filter='All')}}">-->
+<!--                         <i class="fa-solid fa-house"></i><br><span title="Has chairs ?">All</span></a>-->
+
+                         <a class="btn btn-filter set active" href="{{ url_for('fn_filter_shop_coffee', has_filter='wifi')}}" >
+                         <i class="fa fa-fw fa-wifi"></i><br><span title="Has a good Wi-Fi ?">Wi-Fi</span></a>
+
+                        <a class="btn btn-filter set active" href="{{ url_for('fn_filter_shop_coffee', has_filter='socket')}}">
+                        <i class="fa-solid fa-plug"></i><br><span title="Has sockets ?">Sockets</span></a>
+
+                        <a class="btn btn-filter set active" href="{{ url_for('fn_filter_shop_coffee', has_filter='calls')}}">
+                        <i class="fa-solid fa-square-phone-flip"></i><br><span title="Can i take calls ?">Take Calls</span></a>
+                    </div>
+                    <div class="div-others">
+                        <h1 id="id-others">OTHERS</h1>
+                        <br>
+<!--                        <a class="btn btn-filter set active" href="{{ url_for('fn_filter_shop_coffee', has_filter='chairs')}}">-->
+<!--                        <i class="fa-solid fa-chair"></i><br><span title="Has chairs ?">Chairs</span></a>-->
+
+                        <a class="btn btn-filter set active" href="{{ url_for('fn_filter_shop_coffee', has_filter='toilet')}}">
+                        <i class="fa-solid fa-restroom"></i><br><span title="Has toilets ?">Toilets</span></a>
+                    </div>
+
+                </div>
+                <div class="col div-main-shop-img">
+                      {% for idx in range(data_coffee_shops|length): %}
+                        <div class="div-shop-img filterDiv wifi">
+                            <img class="shop-img" src="{{ data_coffee_shops[idx].img_url}}" alt="img-shop-url">
+<!--                            <h1 class="name-text-img">{{data_coffee_shops[idx].name}}</h1>-->
+                            <a class="name-text-img" href="{{ data_coffee_shops[idx].map_url}}">{{data_coffee_shops[idx].name}}</a>
+                            <h1 class="icon-img"><i  class="fa-solid fa-earth-africa"></i> {{data_coffee_shops[idx].location}}</h1>
+                            <h1 class="icon-img">Seats: <i class="fa-solid fa-chair"></i>      {{data_coffee_shops[idx].seats}}      | <i class="fa-solid fa-mug-hot"></i> Price:      {{data_coffee_shops[idx].coffee_price}}</h1>
+                            <h1 class="icon-img">Productivity & Others</h1>
+                            <h1 class="icon-img">{% if data_coffee_shops[idx].has_wifi: %}      <i class="fa-solid fa-wifi"></i> {% endif %} {% if data_coffee_shops[idx].can_take_calls: %}      <i class="fa-solid fa-phone"></i> {% endif %} {% if data_coffee_shops[idx].has_sockets:%}      <i class="fa-solid fa-plug-circle-bolt"></i> {% endif %} {% if data_coffee_shops[idx].has_toilet: %}      <i class="fa-solid fa-toilet"></i>{% endif %} </h1>
+                            <a class="icon-img" href="{{ url_for('fn_del_shop_coffee', cafe_id=data_coffee_shops[idx].id) }}"><i class="fa-solid fa-trash-can"></i>   Maintenance</a>
+
+                        </div>
+                    <br>
+                     {% endfor %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Scripts Filters -->
+
+     <script type="text/javascript" id="">window._fs_debug=!1;window._fs_host="fullstory.com";window._fs_script="edge.fullstory.com/s/fs.js";window._fs_org="NVWYF";window._fs_namespace="FS";
+        (function(e,h,k,l,f,b,a,g){k in e?e.console&&e.console.log&&e.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].'):(a=e[k]=function(d,c,b){a.q?a.q.push([d,c,b]):a._api(d,c,b)},a.q=[],b=h.createElement(l),b.async=1,b.crossOrigin="anonymous",b.src="https://"+_fs_script,g=h.getElementsByTagName(l)[0],g.parentNode.insertBefore(b,g),a.identify=function(d,c,b){a(f,{uid:d},b);c&&a(f,c,b)},a.setUserVars=function(d,c){a(f,d,c)},a.event=function(d,c,b){a("event",{n:d,p:c},b)},a.shutdown=
+        function(){a("rec",!1)},a.restart=function(){a("rec",!0)},a.log=function(b,c){a("log",[b,c])},a.consent=function(b){a("consent",!arguments.length||b)},a.identifyAccount=function(d,c){b="account";c=c||{};c.acctId=d;a(b,c)},a.clearUserCookie=function(){})})(window,document,window._fs_namespace,"script","user");
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cafe&Wifi API</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{‌{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Google Font Families -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&family=Montserrat&family=Neucha&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/908b69d6e2.js" crossorigin="anonymous"></script>
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="./static/css/styles.css" rel="stylesheet" />
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div>
+        <div class="div-wel-cafe-wif">
+            <h1><i class="fa-solid fa-coffee-pot"></i>Welcome to the Cafe & Wifi API</h1>
+        </div>
+        <div class="container div-main-fil-img">
+            <div class="row">
+                <div class="col div-filters">
+                    <h1 class="h1-text-filters">FILTERS</h1>
+                    <button type="button" class="btn btn-dark btn-lg download-button"> <i class="fa-brands fa-apple"></i> Download</button>
+                    <button type="button" class="btn btn-outline-light btn-lg download-button"><i class="fa-brands fa-google-play"></i> Download</button>
+                </div>
+                <div class="col div-main-shop-img">
+                    {% for idx in range(data_coffee_shops|length): %}
+                        <div class="div-shop-img">
+                            <img class="shop-img" src="{{ data_coffee_shops[idx].img_url}}" alt="img-shop-url">
+                            <h1 class="name-text-img">{{data_coffee_shops[idx].name}}</h1>
+                            <h1 class="icon-img"><i  class="fa-solid fa-earth-africa"></i> {{data_coffee_shops[idx].location}}</h1>
+                            <h1 class="icon-img"><i class="fa-solid fa-chair"></i>      {{data_coffee_shops[idx].seats}}      <i class="fa-solid fa-mug-hot"></i>      {{data_coffee_shops[idx].coffee_price}}</h1>
+                            <h1 class="icon-img">Productivity</h1>
+                            <h1 class="icon-img">{% if data_coffee_shops[idx].has_wifi: %}      <i class="fa-solid fa-wifi class-obj"></i> {% endif %} {% if data_coffee_shops[idx].can_take_calls: %}      <i class="fa-solid fa-phone"></i> {% endif %} {% if data_coffee_shops[idx].has_toilet: %}      <i class="fa-solid fa-toilet"></i>{% endif %} {% if data_coffee_shops[idx].has_sockets:%}      <i class="fa-solid fa-plug-circle-bolt"></i> {% endif %}</h1>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

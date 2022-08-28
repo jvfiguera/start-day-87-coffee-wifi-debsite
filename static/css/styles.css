@@ -1,0 +1,136 @@
+html,body{
+width: 100%;
+height: 100%;
+margin: 0;
+padding: 0;
+overflow-x: hidden;
+overflow-y: hidden;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.div-wel-cafe-wif{
+  background-color: #1A1A40;
+  color: white;
+  height: 80px;
+  width: 100%;
+  padding: 1px;
+  justify-content: center;
+}
+
+#id-div-filters{
+  border-right: 6px solid #1A1A40;
+  position: relative;
+  top: 60px;
+  height: 420px;
+  max-width: 300px;
+}
+
+.div-main-shop-img{
+  position: relative;
+  top: 20px;
+  width: 810px;
+  height: 550px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.div-shop-img{
+  height: 170px;
+  width: 100%;
+}
+
+.shop-img{
+  float: left;
+  width: 180px;
+  height: 170px;
+  text-align: left;
+}
+
+.name-text-img{
+  font-family: 'MonteCarlo';
+  color: #525E75;
+  position: relative;
+  left: 10px;
+  font-size: 35px;
+  font-weight: lighter;
+  text-decoration: none;
+}
+
+.loc-text-img{
+  position: relative;
+  left: 20px;
+  font-size: 18px;
+  font-weight: lighter;
+  width: auto;
+}
+
+.h1-text-filters{
+  position: relative;
+  top: 20px;
+  font-family: 'Montserrat';
+  font-size: 35px;
+  color: #525E75;
+  font-weight: lighter;
+  width: 300px;
+}
+.icon-img{
+  position: relative;
+  left: 20px;
+  font-size: 12px;
+  font-weight: lighter;
+  width: auto;
+  color : #1A1A40;
+}
+
+#id-productivity{
+  font-family: 'Montserrat';
+  font-size: 15px;
+  color: #1A1A40;
+  font-weight:bold;
+
+}
+
+#id-others{
+  font-family: 'Montserrat';
+  font-size: 15px;
+  color: #1A1A40;
+  font-weight:bold;
+}
+
+.div-others{
+  position: relative;
+  top: 30px;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-add {
+    position: relative;
+    right: 80px;
+    top: 25px;
+}
+
+.head_title {
+    position: relative;
+    top: 15px;
+    left: 150px;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.btn:hover {
+  background: #c7d0d6;
+  background-image: -webkit-linear-gradient(top, #c7d0d6, #aabecc);
+  background-image: -moz-linear-gradient(top, #c7d0d6, #aabecc);
+  background-image: -ms-linear-gradient(top, #c7d0d6, #aabecc);
+  background-image: -o-linear-gradient(top, #c7d0d6, #aabecc);
+  background-image: linear-gradient(to bottom, #c7d0d6, #aabecc);
+  text-decoration: none;
+}
